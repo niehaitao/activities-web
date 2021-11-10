@@ -7,8 +7,8 @@ env:
   DOCKER_IMAGE: react-activities
   DOCKER_USER: ci-pop-cloud
 
-  DOCKER_SOURCE: ./
-  DOCKER_FILE: app.dockerfile
+  DOCKER_SOURCE: .
+  DOCKER_FILE: ./react-activities/app.dockerfile
 
 on:
   workflow_dispatch:
@@ -27,18 +27,20 @@ jobs:
 
       - name: Get current date
         id: date
-        run: echo "::set-output name=current::$(date +'%Y%m%d%H%M%S')"
+        run: echo "::set-output name=current::$(date +'%F %H:%M:%S')"
+
+      - name: Get current sha
+        id: sha
+        run: echo "::set-output name=current::$(git rev-parse --short HEAD)"
 
       - name: Docker Build-Push
         uses: docker/build-push-action@v1
         with:
+          path: ${{ env.DOCKER_SOURCE }}
           dockerfile: ${{ env.DOCKER_FILE }}
           username: "ci-pop-cloud"
           password: ${{ secrets.CI_POP_CLOUD_PERSONAL_ACCESS_TOKEN }}
           registry: ghcr.io
           repository: pop-cloud/${{ env.DOCKER_IMAGE }}
           tags: ${{ github.event.inputs.tags }}
-          build-args:
-            - API_URL: "http://localhost:5000/activities"
-            - BUILD: ${{ steps.date.outputs.current }}
-            - GIT_HASH: "foo"
+          build_args: API_URL="http://localhost:5000/activities",BUILD=${{ steps.date.outputs.current }},GIT_HASH=${{ steps.sha.outputs.current }}
