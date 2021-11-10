@@ -8,7 +8,7 @@ env:
   DOCKER_USER: ci-pop-cloud
 
   DOCKER_SOURCE: .
-  DOCKER_FILE: ./react-activities/app.dockerfile
+  DOCKER_FILE: ./app.dockerfile
 
 on:
   workflow_dispatch:
