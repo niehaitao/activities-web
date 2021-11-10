@@ -1,0 +1,44 @@
+name: ci-docker-image@ghcr.io
+
+# docker pull ghcr.io/pop-cloud/react-activities:1.0.1
+env:
+  DOCKER_REGISTRY: ghcr.io
+  DOCKER_REPOSITORY: pop-cloud
+  DOCKER_IMAGE: react-activities
+  DOCKER_USER: ci-pop-cloud
+
+  DOCKER_SOURCE: ./
+  DOCKER_FILE: app.dockerfile
+
+on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: "docker image version"
+        required: true
+        default: "latest,0.0.1"
+
+jobs:
+  release-docker-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v2
+
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=current::$(date +'%Y%m%d%H%M%S')"
+
+      - name: Docker Build-Push
+        uses: docker/build-push-action@v1
+        with:
+          dockerfile: ${{ env.DOCKER_FILE }}
+          username: "ci-pop-cloud"
+          password: ${{ secrets.CI_POP_CLOUD_PERSONAL_ACCESS_TOKEN }}
+          registry: ghcr.io
+          repository: pop-cloud/${{ env.DOCKER_IMAGE }}
+          tags: ${{ github.event.inputs.tags }}
+          build-args:
+            - API_URL: "http://localhost:5000/activities"
+            - BUILD: ${{ steps.date.outputs.current }}
+            - GIT_HASH: "foo"
