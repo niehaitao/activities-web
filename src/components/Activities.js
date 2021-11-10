@@ -1,6 +1,3 @@
-/**
- * This source code is exported from pxCode, you can get more document from https://www.pxcode.io
- */
 import React, { useEffect, useState } from "react";
 import { StyleSheet, css } from "aphrodite/no-important";
 
