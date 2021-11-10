@@ -1,10 +1,18 @@
 # React Activities
 
-**React Activities** is a simple **React Application**, for demonstrating the **CI/CD** process.
+**React Activities** is a simple **React Application** running a simple **Release Process**.
+> ![image](doc/app.png)
 
 ## TL;DR
 
-## Local
+```bash
+docker pull ghcr.io/pop-cloud/react-activities:latest
+docker run --name my-react --rm -p 3000:3000 ghcr.io/pop-cloud/react-activities:latest
+```
+
+Open http://localhost:3000/
+
+## 1. Local Dockerizing
 
 ```bash
 docker build . \
@@ -18,6 +26,34 @@ docker run --name my-react --rm -p 3000:3000 react-activities:latest
 
 docker exec -it my-react /bin/sh
 ```
+
+## 2. Remote Dockerizing
+Using [GitHub Action](https://github.com/niehaitao/react-activities/actions)
+- Automatic run for each push on master
+- Manual run
+
+<details>
+
+> ![image](doc/ci-docker-githhub-action.png)
+
+</details>
+
+## 3. Docker Registry
+
+[Docker Registry](https://github.com/orgs/pop-cloud/packages/container/package/react-activities) `ghcr.io/pop-cloud/react-activities`
+
+<details>
+
+> ![image](doc/ci-docker-registry.png)
+
+</details>
+
+```bash
+docker pull ghcr.io/pop-cloud/react-activities:0.0.1
+
+docker run --name my-react --rm -p 3000:3000 react-activities:latest
+```
+Open http://localhost:3000/
 
 ## References
 
