@@ -1,7 +1,7 @@
 # React Activities
 
 **React Activities** is a simple **React Application** running a simple **Release Process**.
-> ![image](doc/arch.png)
+> ![image](doc/app.png)
 
 ## TL;DR
 
