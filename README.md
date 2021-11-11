@@ -7,22 +7,36 @@
 
 ```bash
 docker pull ghcr.io/pop-cloud/react-activities:latest
-docker run --name my-react --rm -p 3000:3000 ghcr.io/pop-cloud/react-activities:latest
+docker run --name my-react --rm -p 8080:80 ghcr.io/pop-cloud/react-activities:latest
 ```
 
-Open http://localhost:3000/
+Open http://localhost:8080/
+
+## 0. Local Rest API
+
+We can use the json-server to a full fake REST API with a simple [data/db.json](data/db.json) in less than 30 seconds 
+
+```json
+{ "activities": { "create": 24, "update": 160, "delete": 16 } }
+```
+
+```bash
+npm install -g json-server
+
+json-server --watch data/db.json --port 5000
+```
 
 ## 1. Local Dockerizing
 
 ```bash
 docker build . \
   -f app.dockerfile \
-  --build-arg API_URL='http://localhost:5000/activities' \
+  --build-arg ENV='test' \
   --build-arg BUILD="$(date "+%F %H:%M:%S")" \
   --build-arg GIT_HASH="$(git rev-parse --short HEAD)" \
   -t react-activities
   
-docker run --name my-react --rm -p 3000:3000 react-activities:latest
+docker run --name my-react --rm -p 8080:80 react-activities:latest
 
 docker exec -it my-react /bin/sh
 ```
@@ -51,9 +65,24 @@ Using [GitHub Action](https://github.com/niehaitao/react-activities/actions)
 ```bash
 docker pull ghcr.io/pop-cloud/react-activities:0.0.1
 
-docker run --name my-react --rm -p 3000:3000 react-activities:latest
+docker run --name my-react --rm -p 3030:3000 react-activities:latest
 ```
-Open http://localhost:3000/
+Open http://localhost:3030/
+
+## 4. Kubernetes
+
+```bash
+kubectl create deploy my-react --image ghcr.io/pop-cloud/react-activities:latest
+kubectl port-forward \
+  $(kubectl get pods --selector "app=my-react" -o=name) \
+  8080:80
+```
+
+## 5. Helm Chart
+
+```bash
+helm upgrade -i my-react react-activities --repo https://pop-cloud.github.io/helm-charts
+```
 
 ## References
 
