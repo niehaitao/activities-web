@@ -14,9 +14,9 @@ on:
   workflow_dispatch:
     inputs:
       tags:
-        description: "docker image version"
+        description: "docker image version as latest,0.0.1"
         required: true
-        default: "latest,0.0.2"
+        default: "latest"
   push:
     branches:
       - main
