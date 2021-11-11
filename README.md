@@ -36,7 +36,6 @@ docker build . \
   --build-arg BUILD="$(date "+%F %H:%M:%S")" \
   --build-arg GIT_HASH="$(git rev-parse --short HEAD)" \
   -t react-activities
-
 docker run --name my-react --rm -p 8080:80 react-activities:latest
 ```
 
@@ -62,11 +61,9 @@ Using [GitHub Action](https://github.com/niehaitao/react-activities/actions)
 </details>
 
 ```bash
-docker pull ghcr.io/pop-cloud/react-activities:0.0.1
-
-docker run --name my-react --rm -p 3030:3000 react-activities:latest
+docker pull ghcr.io/pop-cloud/react-activities:latest
+docker run --name my-react --rm -p 8080:80 ghcr.io/pop-cloud/react-activities:latest
 ```
-Open http://localhost:3030/
 
 ## 4. Kubernetes
 
