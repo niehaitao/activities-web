@@ -20,7 +20,7 @@ on:
       api_url:
         description: "api url"
         required: false
-        default: "http://localhost:5000/activities"
+        default: http://localhost:5000/activities
   push:
     branches:
       - main
