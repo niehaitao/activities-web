@@ -16,7 +16,7 @@ export default function App(props) {
   }, []);
 
   const fetchActivities = async () => {
-    await fetch("http://localhost:5050/activities")
+    await fetch(REACT_APP_API_URL)
       .then((res) => {
         if (!res.ok) throw Error("Error coming back from " + REACT_APP_API_URL);
         return res.json();

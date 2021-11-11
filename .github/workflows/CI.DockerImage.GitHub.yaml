@@ -16,7 +16,7 @@ on:
       tags:
         description: "docker image version"
         required: true
-        default: "latest,0.0.1"
+        default: "latest,0.0.2"
   push:
     branches:
       - main
@@ -47,4 +47,4 @@ jobs:
           registry: ghcr.io
           repository: pop-cloud/${{ env.DOCKER_IMAGE }}
           tags: ${{ github.event.inputs.tags }}
-          build_args: API_URL='http://localhost:5000/activities',BUILD=${{ steps.date.outputs.current }},GIT_HASH=${{ steps.sha.outputs.current }}
+          build_args: API_URL="http://localhost:5000/activities",BUILD=${{ steps.date.outputs.current }},GIT_HASH=${{ steps.sha.outputs.current }}
