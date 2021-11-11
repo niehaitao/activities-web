@@ -8,10 +8,11 @@ COPY jsconfig.json .
 ADD src /usr/app/src
 ADD public /usr/app/public
 # Get build argument and set environment variable
-ARG API_URL
+ARG ENV
 ARG GIT_HASH
 ARG BUILD
 
+COPY .env.$ENV .env
 ENV REACT_APP_API_URL=http://localhost:5000/activities
 ENV REACT_APP_GIT_HASH=$GIT_HASH
 ENV REACT_APP_BUILD=$BUILD

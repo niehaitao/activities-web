@@ -17,6 +17,10 @@ on:
         description: "docker image version as latest,0.0.1"
         required: true
         default: "latest"
+      env:
+        description: "environment"
+        required: true
+        default: "test"
   push:
     branches:
       - main
@@ -47,4 +51,4 @@ jobs:
           registry: ghcr.io
           repository: pop-cloud/${{ env.DOCKER_IMAGE }}
           tags: ${{ github.event.inputs.tags }}
-          build_args: BUILD=${{ steps.date.outputs.current }},GIT_HASH=${{ steps.sha.outputs.current }}
+          build_args: ENV=${{ github.event.inputs.env }},BUILD=${{ steps.date.outputs.current }},GIT_HASH=${{ steps.sha.outputs.current }}
