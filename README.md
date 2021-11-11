@@ -36,10 +36,8 @@ docker build . \
   --build-arg BUILD="$(date "+%F %H:%M:%S")" \
   --build-arg GIT_HASH="$(git rev-parse --short HEAD)" \
   -t react-activities
-  
-docker run --name my-react --rm -p 8080:80 react-activities:latest
 
-docker exec -it my-react /bin/sh
+docker run --name my-react --rm -p 8080:80 react-activities:latest
 ```
 
 ## 2. Remote Dockerizing
@@ -73,10 +71,8 @@ Open http://localhost:3030/
 ## 4. Kubernetes
 
 ```bash
-kubectl create deploy my-react --image ghcr.io/pop-cloud/react-activities:latest
-kubectl port-forward \
-  $(kubectl get pods --selector "app=my-react" -o=name) \
-  8080:80
+kubectl run my-react --image ghcr.io/pop-cloud/react-activities:latest
+kubectl port-forward my-react 8080:80
 ```
 
 ## 5. Helm Chart
