@@ -13,7 +13,6 @@ ARG GIT_HASH
 ARG BUILD
 
 COPY .env.$ENV .env
-ENV REACT_APP_API_URL=http://localhost:5000/activities
 ENV REACT_APP_GIT_HASH=$GIT_HASH
 ENV REACT_APP_BUILD=$BUILD
 RUN npm run build
