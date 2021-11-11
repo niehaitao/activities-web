@@ -8,7 +8,9 @@ image:
   repository: ghcr.io/pop-cloud/react-activities
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 0.0.1
+  tag: 0.0.2
+
+containerPort: 80
 
 imagePullSecrets: []
 nameOverride: ""
