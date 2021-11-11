@@ -14,7 +14,8 @@ Open http://localhost:8080/
 
 ## 0. Local Rest API
 
-We can use the json-server to a full fake REST API with a simple [data/db.json](data/db.json) in less than 30 seconds 
+We can use the [json-server](https://github.com/typicode/json-server) to fake a full REST API
+from a simple [data/db.json](data/db.json) in less than 30 seconds 
 
 ```json
 { "activities": { "create": 24, "update": 160, "delete": 16 } }
