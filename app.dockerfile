@@ -11,9 +11,14 @@ ADD public /usr/app/public
 ARG API_URL
 ARG GIT_HASH
 ARG BUILD
-RUN touch .env
-RUN echo "REACT_APP_API_URL=$API_URL"   >> .env
-RUN echo "REACT_APP_GIT_HASH=$GIT_HASH" >> .env
-RUN echo "REACT_APP_BUILD=$BUILD"       >> .env
+
+ENV REACT_APP_API_URL=$API_URL
+ENV REACT_APP_GIT_HASH=$GIT_HASH
+ENV REACT_APP_BUILD=$BUILD
+RUN npm run build
+
 # Run App
-CMD ["npm", "start"]
+FROM nginx:stable-alpine
+COPY --from=builder /usr/app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]   

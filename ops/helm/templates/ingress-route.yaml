@@ -1,0 +1,18 @@
+{{- if .Values.ingressroute.enabled -}}
+{{- $fullName := include "react-activities.fullname" . -}}
+{{- $svcPort := .Values.service.port -}}
+{{- $host := required "Ingress Route Host" .Values.ingressroute.host | quote -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: react-activities
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host( {{ $host }})
+      services:
+        - name:  {{ $fullName }}
+          port: {{ $svcPort }}
+{{- end }}
