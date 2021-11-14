@@ -1,11 +1,11 @@
 {{- if .Values.ingressroute.enabled -}}
-{{- $fullName := include "react-activities.fullname" . -}}
+{{- $fullName := include "activities-web.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
 {{- $host := required "Ingress Route Host" .Values.ingressroute.host | quote -}}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: react-activities
+  name: activities-web
 spec:
   entryPoints:
     - websecure

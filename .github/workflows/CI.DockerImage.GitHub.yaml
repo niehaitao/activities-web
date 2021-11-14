@@ -1,10 +1,10 @@
 name: ci-docker-image@ghcr.io
 
-# docker pull ghcr.io/pop-cloud/react-activities:1.0.1
+# docker pull ghcr.io/pop-cloud/activities-web:1.0.1
 env:
   DOCKER_REGISTRY: ghcr.io
   DOCKER_REPOSITORY: pop-cloud
-  DOCKER_IMAGE: react-activities
+  DOCKER_IMAGE: activities-web
   DOCKER_USER: ci-pop-cloud
 
   DOCKER_SOURCE: .

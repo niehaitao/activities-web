@@ -1,13 +1,13 @@
-# React Activities
+# Activities Web
 
-**React Activities** is a simple **React Application** running a simple **Release Process**.
+**Activities Web** is a simple **React Application** running a simple **Release Process**.
 > ![image](doc/app-arch.png)
 
 ## TL;DR
 
 ```bash
-docker pull ghcr.io/pop-cloud/react-activities:latest
-docker run --name my-react --rm -p 8080:80 ghcr.io/pop-cloud/react-activities:latest
+docker pull ghcr.io/pop-cloud/activities-web:latest
+docker run --name my-react --rm -p 8080:80 ghcr.io/pop-cloud/activities-web:latest
 ```
 
 Open http://localhost:8080/
@@ -31,16 +31,16 @@ json-server --watch data/db.json --port 5000
 
 ```bash
 docker build . \
-  -f app.dockerfile \
+  -f ops/docker/app.dockerfile \
   --build-arg ENV='test' \
   --build-arg BUILD="$(date "+%F %H:%M:%S")" \
   --build-arg GIT_HASH="$(git rev-parse --short HEAD)" \
-  -t react-activities
-docker run --name my-react --rm -p 8080:80 react-activities:latest
+  -t act-web
+docker run -p 8082:80   --name web --network act --rm act-web:latest
 ```
 
 ## 2. Remote Dockerizing
-Using [GitHub Action](https://github.com/niehaitao/react-activities/actions)
+Using [GitHub Action](https://github.com/niehaitao/activities-web/actions)
 - Automatic run for each push on master
 - Manual run
 
@@ -52,7 +52,7 @@ Using [GitHub Action](https://github.com/niehaitao/react-activities/actions)
 
 ## 3. Docker Registry
 
-[Docker Registry](https://github.com/orgs/pop-cloud/packages/container/package/react-activities) `ghcr.io/pop-cloud/react-activities`
+[Docker Registry](https://github.com/orgs/pop-cloud/packages/container/package/activities-web) `ghcr.io/pop-cloud/activities-web`
 
 <details>
 
@@ -61,21 +61,21 @@ Using [GitHub Action](https://github.com/niehaitao/react-activities/actions)
 </details>
 
 ```bash
-docker pull ghcr.io/pop-cloud/react-activities:latest
-docker run --name my-react --rm -p 8080:80 ghcr.io/pop-cloud/react-activities:latest
+docker pull ghcr.io/pop-cloud/activities-web:latest
+docker run --name my-react --rm -p 8080:80 ghcr.io/pop-cloud/activities-web:latest
 ```
 
 ## 4. Kubernetes
 
 ```bash
-kubectl run my-react --image ghcr.io/pop-cloud/react-activities:latest
+kubectl run my-react --image ghcr.io/pop-cloud/activities-web:latest
 kubectl port-forward my-react 8080:80
 ```
 
 ## 5. Helm Chart
 
 ```bash
-helm upgrade -i my-react react-activities --repo https://pop-cloud.github.io/helm-charts
+helm upgrade -i my-react activities-web --repo https://pop-cloud.github.io/helm-charts
 ```
 
 ## References

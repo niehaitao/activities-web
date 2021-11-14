@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "react-activities.name" -}}
+{{- define "activities-web.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "react-activities.fullname" -}}
+{{- define "activities-web.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "react-activities.chart" -}}
+{{- define "activities-web.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "react-activities.labels" -}}
-helm.sh/chart: {{ include "react-activities.chart" . }}
-{{ include "react-activities.selectorLabels" . }}
+{{- define "activities-web.labels" -}}
+helm.sh/chart: {{ include "activities-web.chart" . }}
+{{ include "activities-web.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "react-activities.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "react-activities.name" . }}
+{{- define "activities-web.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "activities-web.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "react-activities.serviceAccountName" -}}
+{{- define "activities-web.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "react-activities.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "activities-web.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
