@@ -25,6 +25,11 @@ from a simple [data/db.json](data/db.json) in less than 30 seconds
 npm install -g json-server
 
 json-server --watch data/db.json --port 5000
+
+db_file=/Users/haitaonie/ET/03_LIL/helm-resources/web/data/db.json
+db_file=/Users/haitaonie/ET/03_LIL/activities/web/data/db.json
+
+docker run -p 8081:80 -v ${db_file}:/data/db.json --name api --network act --rm clue/json-server
 ```
 
 ## 1. Local Dockerizing
