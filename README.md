@@ -2,9 +2,9 @@
 
 **Activities Web** is a simple **React Application** running a simple **Release Process**.
 
-|                 Application                  |                Architecture                |
+|                 Application                  |                  Workflow                  |
 | :------------------------------------------: | :----------------------------------------: |
-| <img src="doc/activities.gif" width="300" /> | <img src="doc/app-arch.png" width="800" /> |
+| <img src="doc/activities.gif" width="300" /> | <img src="doc/workflow.png" width="800" /> |
 
 ## TL;DR
 
