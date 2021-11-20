@@ -1,7 +1,10 @@
 # Activities Web
 
 **Activities Web** is a simple **React Application** running a simple **Release Process**.
-> ![image](doc/app-arch.png)
+
+|                 Application                  |                Architecture                |
+| :------------------------------------------: | :----------------------------------------: |
+| <img src="doc/activities.gif" width="300" /> | <img src="doc/app-arch.png" width="800" /> |
 
 ## TL;DR
 
@@ -14,20 +17,15 @@ Open http://localhost:8080/
 
 ## 0. Local Rest API
 
-We can use the [json-server](https://github.com/typicode/json-server) to fake a full REST API
-from a simple [data/db.json](data/db.json) in less than 30 seconds 
-
-```json
-{ "activities": { "create": 24, "update": 160, "delete": 16 } }
-```
+In less than 30 seconds, we can fake a full REST API using the [json-server](https://github.com/typicode/json-server) from [a simple json file](https://raw.githubusercontent.com/niehaitao/niehaitao.github.io/main/applications/activities/db.json).
 
 ```bash
 npm install -g json-server
 
-json-server --watch data/db.json --port 5000
+json-server https://raw.githubusercontent.com/niehaitao/niehaitao.github.io/main/applications/activities/db.json --port 8081 --delay 3000
 
-db_file=/Users/haitaonie/ET/03_LIL/helm-resources/web/data/db.json
-db_file=/Users/haitaonie/ET/03_LIL/activities/web/data/db.json
+curl -X GET 'http://localhost:8081/activities'
+# { "create": 24, "update": 160, "delete": 16 }
 
 docker run -p 8081:80 -v ${db_file}:/data/db.json --name api --network act --rm clue/json-server
 ```
@@ -45,7 +43,9 @@ docker run -p 8082:80   --name web --network act --rm act-web:latest
 ```
 
 ## 2. Remote Dockerizing
+
 Using [GitHub Action](https://github.com/niehaitao/activities-web/actions)
+
 - Automatic run for each push on master
 - Manual run
 
