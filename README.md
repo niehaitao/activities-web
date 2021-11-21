@@ -1,19 +1,19 @@
 # Activities Web
 
-**Activities Web** is a simple **React Application** running a simple **Release Process**.
+**Activities Web** is a **React Application** which shows the _create/update/delete_ activities by fetching json data from an API.
 
 |                 Application                  |                  Workflow                  |
 | :------------------------------------------: | :----------------------------------------: |
 | <img src="doc/activities.gif" width="300" /> | <img src="doc/workflow.png" width="800" /> |
 
-## TL;DR
+This project uses GitHub Actions to build docker image and helm chart, and publish them. To get started:
 
-```bash
-docker pull ghcr.io/pop-cloud/activities-web:latest
-docker run --name my-react --rm -p 8080:80 ghcr.io/pop-cloud/activities-web:latest
-```
+| Application | Command                                                                                        | Check                                   |
+| :---------: | :--------------------------------------------------------------------------------------------- | :-------------------------------------- |
+|   docker    | `docker run --name my-react --rm -p 8080:80 ghcr.io/pop-cloud/activities-web:latest`           | http://localhost:8080/                  |
+|     k8s     | `kubectl run my-react --image ghcr.io/pop-cloud/activities-web:latest`                         | `kubectl port-forward my-react 8080:80` |
+|    helm     | `helm: helm upgrade -i my-react activities-web --repo https://pop-cloud.github.io/helm-charts` | http://localhost:8080/                  |
 
-Open http://localhost:8080/
 
 ## 0. Local Rest API
 
@@ -39,49 +39,17 @@ docker build . \
   --build-arg BUILD="$(date "+%F %H:%M:%S")" \
   --build-arg GIT_HASH="$(git rev-parse --short HEAD)" \
   -t act-web
-docker run -p 8082:80   --name web --network act --rm act-web:latest
+docker run -p 8082:80 --name web --network act --rm act-web:latest
 ```
 
 ## 2. Remote Dockerizing
 
-Using [GitHub Action](https://github.com/niehaitao/activities-web/actions)
+|                 Build                  |                  Registry                  |
+| ------------------------------------------: | :---------------------------------------- |
+| Using [GitHub Action](https://github.com/niehaitao/activities-web/actions)| [`ghcr.io/pop-cloud/activities-web`](https://github.com/orgs/pop-cloud/packages/container/package/activities-web) |
+| <img src="doc/ci-docker-github-action.png" alt="app"  height="500"> | <img src="doc/ci-docker-registry.png" alt="app"  height="500">|
 
-- Automatic run for each push on master
-- Manual run
 
-<details>
-
-> ![image](doc/ci-docker-githhub-action.png)
-
-</details>
-
-## 3. Docker Registry
-
-[Docker Registry](https://github.com/orgs/pop-cloud/packages/container/package/activities-web) `ghcr.io/pop-cloud/activities-web`
-
-<details>
-
-> ![image](doc/ci-docker-registry.png)
-
-</details>
-
-```bash
-docker pull ghcr.io/pop-cloud/activities-web:latest
-docker run --name my-react --rm -p 8080:80 ghcr.io/pop-cloud/activities-web:latest
-```
-
-## 4. Kubernetes
-
-```bash
-kubectl run my-react --image ghcr.io/pop-cloud/activities-web:latest
-kubectl port-forward my-react 8080:80
-```
-
-## 5. Helm Chart
-
-```bash
-helm upgrade -i my-react activities-web --repo https://pop-cloud.github.io/helm-charts
-```
 
 ## References
 
