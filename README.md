@@ -14,7 +14,6 @@ This project uses GitHub Actions to build docker image and helm chart, and publi
 |     k8s     | `kubectl run my-react --image ghcr.io/pop-cloud/activities-web:latest`                         | `kubectl port-forward my-react 8080:80` |
 |    helm     | `helm: helm upgrade -i my-react activities-web --repo https://pop-cloud.github.io/helm-charts` | http://localhost:8080/                  |
 
-
 ## 0. Local Rest API
 
 In less than 30 seconds, we can fake a full REST API using the [json-server](https://github.com/typicode/json-server) from [a simple json file](https://raw.githubusercontent.com/niehaitao/niehaitao.github.io/main/applications/activities/db.json).
@@ -44,12 +43,10 @@ docker run -p 8082:80 --name web --network act --rm act-web:latest
 
 ## 2. Remote Dockerizing
 
-|                 Build                  |                  Registry                  |
-| ------------------------------------------: | :---------------------------------------- |
-| Using [GitHub Action](https://github.com/niehaitao/activities-web/actions)| [`ghcr.io/pop-cloud/activities-web`](https://github.com/orgs/pop-cloud/packages/container/package/activities-web) |
-| <img src="doc/ci-docker-github-action.png" alt="app"  height="500"> | <img src="doc/ci-docker-registry.png" alt="app"  height="500">|
-
-
+|                                                                      Build | Registry                                                                                                          |
+| -------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------- |
+| Using [GitHub Action](https://github.com/niehaitao/activities-web/actions) | [`ghcr.io/pop-cloud/activities-web`](https://github.com/orgs/pop-cloud/packages/container/package/activities-web) |
+|         <img src="doc/ci-docker-github-action.png" alt="app"  width="500"> | <img src="doc/ci-docker-registry.png" alt="app"  width="500">                                                     |
 
 ## References
 
