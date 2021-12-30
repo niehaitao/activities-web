@@ -51,4 +51,5 @@ jobs:
           registry: ghcr.io
           repository: pop-cloud/${{ env.DOCKER_IMAGE }}
           tags: ${{ github.event.inputs.tags }}
+          labels: env=${{ github.event.inputs.env }}
           build_args: ENV=${{ github.event.inputs.env }},BUILD=${{ steps.date.outputs.current }},GIT_HASH=${{ steps.sha.outputs.current }}
