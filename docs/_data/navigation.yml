@@ -1,0 +1,14 @@
+header:
+
+docs-en:
+  - title:      Activities Web Application
+                DEV Guide
+    children:
+      - title:  Overview
+        url:    /
+      - title:  Getting Started
+        url:    /getting-started
+      - title:  Dockerizing
+        url:    /dockerizing
+      - title:  References
+        url:    /references

@@ -1,0 +1,15 @@
+default:
+  text_skin: forest
+  highlight_theme: default
+  toc:
+    selectors: 'h2,h3'
+  sources: bootcdn
+
+  page:
+    search: default
+    full_width: true
+
+sources:
+  bootcdn:
+    font_awesome: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css'
+    jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js'

@@ -1,0 +1,19 @@
+
+title: Activities Web Application - DEV Guide
+baseurl: "/activities-web" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+
+remote_theme: kitian616/jekyll-TeXt-theme
+# repository_tree: main/docs
+
+plugins:
+  - "jekyll-github-metadata"
+defaults:
+  - scope:
+      path: ""
+    values:
+      nav_key: docs
+      sidebar:
+        nav: docs-en
+      aside:
+        toc: true

@@ -1,0 +1,11 @@
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+
+# Ruby Gem
+*.gem
+.bundle
+Gemfile.lock
+**/vendor/bundle
