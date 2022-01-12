@@ -1,10 +1,12 @@
 
-title: Activities Web Application - DEV Guide
+title: Activities Web Application
 baseurl: "/activities-web" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 remote_theme: kitian616/jekyll-TeXt-theme
-# repository_tree: main/docs
+
+repository: niehaitao/activities-web
+repository_tree: main/docs
 
 plugins:
   - "jekyll-github-metadata"

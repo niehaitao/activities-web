@@ -1,13 +1,14 @@
 ---
 layout: article
 permalink: /getting-started
+title: Getting Started
 aside:
   toc: true
 sidebar:
   nav: docs-en
 ---
 
-# Getting Started
+
 
 **Purpose**: Run the application against a mock API 
 

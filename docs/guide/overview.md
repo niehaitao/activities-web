@@ -1,13 +1,13 @@
 ---
 layout: article
 permalink: /
+title: Overview
 aside:
   toc: true
 sidebar:
   nav: docs-en
 ---
 
-# Overview
 
 **Activities Web** is a **React Application** which shows the _create/update/delete_ activities by fetching json data from an API.
 

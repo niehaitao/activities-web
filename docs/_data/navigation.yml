@@ -1,8 +1,10 @@
 header:
+  - title:      GitHub
+    url:        https://github.com/niehaitao/activities-web
+
 
 docs-en:
-  - title:      Activities Web Application
-                DEV Guide
+  - title:     Activities Web Application - Development Guide -
     children:
       - title:  Overview
         url:    /

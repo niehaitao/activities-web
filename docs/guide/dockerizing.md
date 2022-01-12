@@ -1,14 +1,12 @@
 ---
 layout: article
 permalink: /dockerizing
+title: Dockerizing
 aside:
   toc: true
 sidebar:
   nav: docs-en
 ---
-
-# Dockerizing
-
 
 ## Local Dockerizing
 

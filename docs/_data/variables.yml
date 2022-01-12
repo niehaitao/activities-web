@@ -7,7 +7,9 @@ default:
 
   page:
     search: default
-    full_width: true
+    full_width: false
+    show_title: true
+    show_edit_on_github: true
 
 sources:
   bootcdn:
