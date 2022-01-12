@@ -19,5 +19,3 @@ defaults:
         nav: docs-en
       aside:
         toc: true
-search:
-  provider: default # "default" (default), false, "google", "custom"
