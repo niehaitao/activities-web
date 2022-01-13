@@ -2,14 +2,17 @@
 layout: article
 permalink: /dockerizing
 title: Dockerizing
-aside:
-  toc: true
 sidebar:
   nav: docs-en
 ---
 
-## Local Dockerizing
+<div class="grid-containre" markdown="1">
 
+<div class="grid grid--p" markdown="1">
+<div class="cell cell--12 cell--md-3 " markdown="1">
+Build the **local** docker image and run it
+</div>
+<div class="cell cell--12 cell--md-9 " markdown="1">
 ```bash
 docker build . \
   -f ops/docker/app.dockerfile \
@@ -19,10 +22,20 @@ docker build . \
   -t act-web
 docker run -p 8082:80 --name web --network act --rm act-web:latest
 ```
+</div>
+<div class="cell cell--12 cell--md-3 " markdown="1">
+Build the docker image with<br> [GitHub-Action](https://github.com/niehaitao/activities-web/actions)
+</div>
+<div class="cell cell--12 cell--md-9 " markdown="1">
+  <img src="images/ci-docker-github-action.png">{:.rounded}
+</div>
+<div class="cell cell--12 cell--md-3 " markdown="1">
+Host the docker image on the GitHub Registry<br> [pop-cloud/activities-web](https://github.com/orgs/pop-cloud/packages/container/package/activities-web)
+</div>
+<div class="cell cell--12 cell--md-9 " markdown="1">
+  <img src="images/ci-docker-registry.png">{:.rounded}
+</div>
 
-## Remote Dockerizing
+</div>
 
-|                                                                      Build | Registry                                                                                                          |
-| -------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------- |
-| Using [GitHub Action](https://github.com/niehaitao/activities-web/actions) | [`ghcr.io/pop-cloud/activities-web`](https://github.com/orgs/pop-cloud/packages/container/package/activities-web) |
-|         <img src="images/ci-docker-github-action.png" alt="app"  width="500"> | <img src="images/ci-docker-registry.png" alt="app"  width="500">                                                     |
+</div>

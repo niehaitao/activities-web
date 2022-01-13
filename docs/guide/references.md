@@ -2,8 +2,6 @@
 layout: article
 permalink: /references
 title: References
-aside:
-  toc: false
 sidebar:
   nav: docs-en
 ---

@@ -2,18 +2,34 @@
 layout: article
 permalink: /
 title: Overview
-aside:
-  toc: true
 sidebar:
   nav: docs-en
 ---
 
-
 **Activities Web** is a **React Application** which shows the _create/update/delete_ activities by fetching json data from an API.
 
-|                 Application                  |                  Workflow                  |
-| :------------------------------------------: | :----------------------------------------: |
-| <img src="images/activities.gif" width="300" /> | <img src="images/workflow.png" width="800" /> |
+
+
+
+
+<div class="card">
+
+  <div class="card__image">
+    <img class="image" src="images/activities.gif"/>
+  </div>
+
+  <div class="card__content">
+    <div class="card__header">
+    <h3>Demo</h3>
+    </div>
+    <p markdown="1">
+      **Activities Web** is a **React Application** which shows the _create/update/delete_ activities by fetching json data from an API.
+    </p>
+  </div>
+
+</div>
+
+<img src="images/workflow.png" />
 
 This project uses GitHub Actions to build docker image and helm chart, and publish them. To get started:
 
