@@ -1,12 +1,11 @@
 default:
   text_skin: forest
-  highlight_theme: default
+  highlight_theme: tomorrow-night-eighties
   toc:
     selectors: 'h2,h3'
   sources: bootcdn
 
   page:
-    search: default
     full_width: false
     show_title: true
     show_edit_on_github: true
